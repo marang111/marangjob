@@ -1,28 +1,63 @@
 body{
 /*	overflow: hidden;*/
 	background-color: yellow;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
 }
 #wrap{
-	display: flex; /* 내부 요소를 옆으로 배치 */
-    flex-direction: row; /* 가로 방향으로 나열 기본값임 */
-    justify-content: flex-start; /* 왼쪽 정렬 */
-    align-items: flex-start; /* 위쪽 정렬 */
-    gap: 20px;
+	display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1vw; /* px 대신 vw 사용 */
+    width: 100%;
+    height: 100%;
 }
-.itembox{
-	width: 200px;
-	background-color: ;
-	padding-top: 1%;
+.loading{
+	position: absolute;
+	z-index: -1;
+	color: gray;
 }
 
-.itemlist{
-	margin-block: 5px;
-	color: dimgray;
-	margin-left: 0.5%;
-	cursor: pointer;
+
+.itembox{
+	width: 15vw;
+	background-color: ;
+	padding-top: 1vh;
+	padding-left: 1vh;
 }
+
+.title{
+	
+}
+.itemlist{
+	display: flex;
+	margin-block: 0.5vh;
+	color: dimgray;
+	margin-left: 0.5vh;
+	background-color: ;
+
+	cursor: pointer;
+
+}
+.yearbox{
+	margin-left: auto;
+	width: 3vw;
+	background-color: ;
+}
+.year{
+	text-align: center;
+}
+.itemlist span{
+	
+}
+
 .itemlist:hover{
 	color: purple;
+	background-color: white;
 }
 .active {
     color: purple; /* 메뉴 활성화된 색상 */
@@ -56,16 +91,24 @@ body{
 	height: 100%;
 	background-color: ;
 	display: flex; /* 내부 요소를 옆으로 배치 */
-	gap: 1%;
+	gap: 1vw;
 	align-items: stretch;
 }
 .image-viewer-container{
 	width: 50%;
+	max-width: 50vw;
 	background-color:  ;
 	text-align: ; 
 		/*이미지 정렬	*/
 }
-
+img{
+	height: auto;
+	max-height: 80vh;
+	max-width: 100%;
+	margin-bottom: 20px;
+	object-fit: contain;
+	display: block;
+}
 .hidden {
     display: none;
 }
@@ -83,8 +126,8 @@ body{
 }
 .controls{
 	position: fixed;
-	width: 100px;
-	height: 100px;
+	width: 6vw;
+	height: 8vw;
 	z-index: 1;
     background-color: ;
     color: ;
@@ -100,12 +143,7 @@ body{
 #viewer-2{
 	background-color: ;
 }
-img{
-	height: 370px;
-	margin-bottom: 20px;
-	object-fit: contain;
-	display: block;
-}
+
 
 .h1{
 	color: ;
@@ -127,7 +165,8 @@ img{
 }
 .textbox{
 	position: relative;
-	width: 30%;
+	width: 30vw;
+	font-size: 1rem;
 	background-color: ;
 }
 .textbox p{
@@ -171,4 +210,46 @@ img{
 	background: linear-gradient(to bottom, rgba(255, 255, 0, 0) 0%, rgba(255, 255, 0, 1) 100%);	
 	position: fixed;
 	bottom: 0;
+}
+
+/* 반응형 적용 */
+@media (max-width: 1024px) {
+    .image-viewer-container {
+        max-width: 60vw;
+    }
+
+    .textbox {
+        width: 40vw;
+    }
+}
+
+@media (max-width: 768px) {
+    #wrap {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .image-viewer-container {
+        max-width: 80vw;
+    }
+
+    .textbox {
+        width: 80vw;
+    }
+}
+
+@media (max-width: 480px) {
+    .image-viewer-container {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .textbox {
+        width: 100%;
+    }
+
+    .controls {
+        width: 12vw;
+        height: 12vw;
+    }
 }
