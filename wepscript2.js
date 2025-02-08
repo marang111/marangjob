@@ -28,12 +28,12 @@ $(document).ready(function () {
     });
 
 
-    // 외부 클릭 시 모든 contentsbox 숨기기
-    $(document).on("click", function (event) {
-        if (!$(event.target).closest(".itemlist, .contentsbox").length) {
-            $(".contentsbox").addClass("hidden").removeClass("visible");
-        }
-    });
+    // // 외부 클릭 시 모든 contentsbox 숨기기
+    // $(document).on("click", function (event) {
+    //     if (!$(event.target).closest(".itemlist, .contentsbox").length) {
+    //         $(".contentsbox").addClass("hidden").removeClass("visible");
+    //     }
+    // });
 
     $('.itemlist').click(function() {
     // 클릭한 요소가 이미 active 클래스를 가지고 있다면
@@ -50,198 +50,227 @@ $(document).ready(function () {
 });
 
     // 각 뷰어에 대한 이미지 데이터
-    const viewerData = {
-        viewer1: {
-            images: [
-                { img: 'img/fire/1.png'},
-                { img: 'img/fire/2.png'},
-                { img: 'img/fire/3.png'},
-                { img: 'img/fire/4.png'},
-                { img: 'img/fire/5.png'},
-                { img: 'img/fire/7.png'},
-                { img: 'img/fire/8.png'},
-                { img: 'img/fire/9.png'},
-                { img: 'img/fire/10.png'},
-                { img: 'img/fire/13.png'}
+    const viewers = [
+    {
+        id: 13,
+        images: [
+            { img: 'img/11/IMG_7349.png' },
+            { img: 'img/11/1ds.png' },
+            { img: 'img/11/1.png' },
+            { img: 'img/11/IMG_73s61.png' }
+            
+            
+        ],
+        currentPage: 0,
+        itemsPerPage: 2
+    },
+    {
+        id: 12,
+        images: [
+            { img: 'img/1129/3.png' },
+            { img: 'img/1129/4.png' },
+            { img: 'img/1129/5.png', textId: 'text-12-1' },
+            { img: 'img/1129/6.png', textId: 'text-12-1' },
+            { img: 'img/1129/8.png', textId: 'text-12-2' },
+            { img: 'img/1129/9.png', textId: 'text-12-2' },
+            { img: 'img/1129/10.png', textId: 'text-12-3' },
+            { img: 'img/1129/13.png', textId: 'text-12-3' },
+            { img: 'img/1129/12.png', textId: 'text-12-4' },
+            { img: 'img/1129/13.png', textId: 'text-12-4' },
+            { img: 'img/1129/14.png', textId: 'text-12-6' }
+        ],
+        currentPage: 0,
+        itemsPerPage: 2
+    },
+    {
+        id: 11,
+        images: [
+            { img: 'img/candle/IMG_1869.png'},
+            { img: 'img/candle/qweqwe.png'},
+            { img: 'img/candle/IMG_182659.png'},
+            { img: 'img/candle/sd.png'},
+            { img: 'img/candle/egku.png'},
+            { img: 'img/candle/6bc10fe1a7c93.jpg'}
 
-            ],
-            currentPage: 0,
-            itemsPerPage: 3
-        },
-        viewer2: {
-            images: [
-                { img: 'img/wolpos/L1880508.jpg'},
-                { img: 'img/wolpos/L1880524.jpg'},
-                { img: 'img/wolpos/L1880442.jpg'},
-                { img: 'img/wolpos/L1880469.jpg'},
+        ],
+        currentPage: 0,
+        itemsPerPage: 2
+    },
 
-                { img: 'img/wolpos/DSC_9970.jpg'},
-                { img: 'img/wolpos/L1880507.jpg'},
-                { img: 'img/wolpos/L1880438.jpg'},
-                { img: 'img/wolpos/L1880463.jpg'},
+    {
+        id: 10,
+        images: [
+            { img: 'img/ka/IMG_7349.png' }
+        ],
+        currentPage: 0,
+        itemsPerPage: 1
+    },
 
-                { img: 'img/wolpos/L1010835.jpg'},
-                { img: 'img/wolpos/L1010719.jpg'},
-                { img: 'img/wolpos/L1010768.jpg'},
-                { img: 'img/wolpos/L1010723.jpg'},
+    {
+        id: 9,
+        images: [
+            { img: 'img/soon/IMG_7349.png' }
+        ],
+        currentPage: 0,
+        itemsPerPage: 1
+    },
 
-                { img: 'img/wolpos/L1880615.jpg'},
-                { img: 'img/wolpos/ss.jpg'},
-                { img: 'img/wolpos/sdfsdf.jpg'},
-                { img: 'img/wolpos/wewww.jpg'},
+    {
+        id: 8,
+        images: [
+            { img: 'img/letter/wewe.png' }
+        ],
+        currentPage: 0,
+        itemsPerPage: 1
+    },
 
-                { img: 'img/wolpos/we.jpg'},
-                { img: 'img/wolpos/fpogd.jpg'},
-                { img: 'img/wolpos/z.jpg'},
-                { img: 'img/wolpos/www.jpg'},
+    {
+        id: 7,
+        images: [
+            
+            { img: 'img/visa/sds.png'},
+            { img: 'img/visa/b.png'},
+            
+        ],
+        currentPage: 0,
+        itemsPerPage: 2
+    },
 
-                { img: 'img/wolpos/L1880410.jpg'},
-                { img: 'img/wolpos/ds.jpg'},
-                { img: 'img/wolpos/L1880617.jpg'},
-                { img: 'img/wolpos/ddsdo.jpg'},
+    {
+        id: 6,
+        images: [
+            { img: 'img/trasse/set00518.jpg' },
+            { img: 'img/trasse/L1000292.jpg' },
 
-                { img: 'img/wolpos/L1880947.jpg'},
-                { img: 'img/wolpos/L1880954.jpg'},
-                { img: 'img/wolpos/L1880399.jpg'},
-                { img: 'img/wolpos/L1010555_p.jpg'},
+            { img: 'img/trasse/L1000307.jpg' },
 
-                { img: 'img/wolpos/L1880477.jpg'},
-                { img: 'img/wolpos/L1880573.jpg'}
+            { img: 'img/trasse/set00702.jpg' },
+            { img: 'img/trasse/set00707.jpg' },
 
-            ],
-            currentPage: 0,
-            itemsPerPage: 4
-        },
-        viewer3: {
-            images: [
-                { img: 'img/trasse/set00518.jpg'},
-                { img: 'img/trasse/L1000292.jpg'},
+            { img: 'img/trasse/set00634.jpg' },
+            { img: 'img/trasse/set00502.jpg' },
 
-                { img: 'img/trasse/L1000307.jpg'},
+            { img: 'img/trasse/1.png' },
+            { img: 'img/trasse/set00653.jpg' }
+        ],
+        currentPage: 0,
+        itemsPerPage: 2
+    },
 
-                { img: 'img/trasse/set00702.jpg'},
-                { img: 'img/trasse/set00707.jpg'},
+    {
+        id: 5,
+        images: [
+            { img: 'img/soopy/7fe2713a-ffe6-4a8a-8bcf-8756f9c1a438.jpg', textId: 'text-7-1' }
+        ],
+        currentPage: 0,
+        itemsPerPage: 1
+    },
 
-                { img: 'img/trasse/set00634.jpg'},
-                { img: 'img/trasse/set00491.jpg'},
+    {
+        id: 4,
+        images: [
+            { img: 'img/colors/hand.png'},
+            { img: 'img/colors/pyoji.png'}
+        ],
+        currentPage: 0,
+        itemsPerPage: 1
+    },
 
-                { img: 'img/trasse/set00502.jpg'},
-                { img: 'img/trasse/1.png'},
+    {
+        id: 3,
+        images: [
+            { img: 'img/colors/hand.png'},
+            { img: 'img/colors/pyoji.png'},
+            
+            { img: 'img/colors/handd.png'},
+            { img: 'img/colors/ssefw.png'},
 
-                { img: 'img/trasse/set00653.jpg'}
-            ],
-            currentPage: 0,
-            itemsPerPage: 2
-        },
-        viewer4: {
-            images: [
-                { img: 'img/ka/1.png', textId: 'text-7-1' }
-            ],
-            currentPage: 0,
-            itemsPerPage: 1
-        },
-        viewer5: {
-            images: [
-                { img: 'img/soopy/7fe2713a-ffe6-4a8a-8bcf-8756f9c1a438.jpg', textId: 'text-7-1' }
-            ],
-            currentPage: 0,
-            itemsPerPage: 1
-        },
-        viewer6: {
-            images: [
-                { img: 'img/1129/3.png'},
-                { img: 'img/1129/4.png'},
-                { img: 'img/1129/5.png', textId: 'text-6-1' },
-                { img: 'img/1129/6.png', textId: 'text-6-1' },
-                { img: 'img/1129/8.png', textId: 'text-6-2' },
-                { img: 'img/1129/9.png', textId: 'text-6-2' },
-                { img: 'img/1129/10.png', textId: 'text-6-3' },
-                { img: 'img/1129/13.png', textId: 'text-6-3' },
-                { img: 'img/1129/12.png', textId: 'text-6-4' },
-                { img: 'img/1129/13.png', textId: 'text-6-4' },
-                { img: 'img/1129/14.png', textId: 'text-6-6' }
-            ],
-            currentPage: 0,
-            itemsPerPage: 2
-        },
-        viewer7: {
-            images: [
-                { img: 'img/visa/visasvi.png' }
-            ],
-            currentPage: 0,
-            itemsPerPage: 2
-        },
-        viewer8: {
-            images: [
-                { img: 'img/carot/3.png'}
-            ],
-            currentPage: 0,
-            itemsPerPage: 2
-        },
-        viewer9: {
-            images: [
-                { img: 'img/soon/3.png'}
-            ],
-            currentPage: 0,
-            itemsPerPage: 2
-        },
-        // viewer10: {
-        //     images: [
-        //         { img: 'img/letter/3.png'}
-        //     ],
-        //     currentPage: 0,
-        //     itemsPerPage: 2
-        // },
-        // viewer11: {
-        //     images: [
-        //         { img: 'img/candle/qweqwe.png'},
-        //         { img: 'img/candle/IMG_1869.png'},
-        //         { img: 'img/candle/egku.png'},
-        //         { img: 'img/candle/sd.png'},
-        //         { img: 'img/candle/6bc10fe1a7c93.jpg'},
-        //         { img: 'img/candle/4.stl'},
-        //         { img: 'img/candle/IMG_1869.png'},
-        //         { img: 'img/candle/IMG_1869.png'},
-        //     ],
-        //     currentPage: 0,
-        //     itemsPerPage: 2
-        // },
-        // viewer12: {
-        //     images: [
-        //         { img: 'img/candle/qweqwe.png'},
-        //         { img: 'img/candle/IMG_1869.png'},
-        //         { img: 'img/candle/egku.png'},
-        //         { img: 'img/candle/sd.png'},
-        //         { img: 'img/candle/6bc10fe1a7c93.jpg'},
-        //         { img: 'img/candle/4.stl'},
-        //         { img: 'img/candle/IMG_1869.png'},
-        //         { img: 'img/candle/IMG_1869.png'},
-        //     ],
-        //     currentPage: 0,
-        //     itemsPerPage: 2
-        // },
-        // viewer13: {
-        //     images: [
-        //         { img: 'img/11/1ds.png'}
-        //     ],
-        //     currentPage: 0,
-        //     itemsPerPage: 2
-        // },
-    };
+            { img: 'img/colors/3.png'},
+            { img: 'img/colors/durnjs0009.png'}
+        ],
+        currentPage: 0,
+        itemsPerPage: 2
+    },
+    {
+        id: 2,
+        images: [
+            { img: 'img/wolpos/L1880508.jpg' },
+            { img: 'img/wolpos/L1880524.jpg' },
+            { img: 'img/wolpos/L1880442.jpg' },
+            { img: 'img/wolpos/L1880469.jpg' },
+
+            { img: 'img/wolpos/DSC_9970.jpg' },
+            { img: 'img/wolpos/L1880507.jpg' },
+            { img: 'img/wolpos/L1880438.jpg' },
+            { img: 'img/wolpos/L1880463.jpg' },
+
+            { img: 'img/wolpos/L1010835.jpg' },
+            { img: 'img/wolpos/L1010719.jpg' },
+            { img: 'img/wolpos/L1010768.jpg' },
+            { img: 'img/wolpos/L1010723.jpg' },
+
+            { img: 'img/wolpos/L1880615.jpg' },
+            { img: 'img/wolpos/ss.jpg' },
+            { img: 'img/wolpos/sdfsdf.jpg' },
+            { img: 'img/wolpos/wewww.jpg' },
+
+            { img: 'img/wolpos/we.jpg' },
+            { img: 'img/wolpos/fpogd.jpg' },
+            { img: 'img/wolpos/z.jpg' },
+            { img: 'img/wolpos/www.jpg' },
+
+            { img: 'img/wolpos/L1880410.jpg' },
+            { img: 'img/wolpos/ds.jpg' },
+            { img: 'img/wolpos/L1880617.jpg' },
+            { img: 'img/wolpos/ddsdo.jpg' },
+
+            { img: 'img/wolpos/L1880947.jpg' },
+            { img: 'img/wolpos/L1880954.jpg' },
+            { img: 'img/wolpos/L1880399.jpg' },
+            { img: 'img/wolpos/L1010555_p.jpg' },
+
+            { img: 'img/wolpos/L1880477.jpg' },
+            { img: 'img/wolpos/L1880573.jpg' }
+        ],
+        currentPage: 0,
+        itemsPerPage: 4
+    },
+    {
+        id: 1,
+        images: [
+            { img: 'img/fire/1.png' },
+            { img: 'img/fire/2.png' },
+            { img: 'img/fire/3.png' },
+            { img: 'img/fire/4.png' },
+            { img: 'img/fire/5.png' },
+            { img: 'img/fire/7.png' },
+            { img: 'img/fire/8.png' },
+            { img: 'img/fire/9.png' },
+            { img: 'img/fire/10.png' },
+            { img: 'img/fire/13.png' }
+        ],
+        currentPage: 0,
+        itemsPerPage: 2
+    }
+];
 
     // 뷰어 업데이트 함수
     function updateViewer(viewerId) {
-        const viewer = $(`#image-viewer-${viewerId.slice(-1)}`);
-        const textContainer = $(`#text-${viewerId.slice(-1)}`);
-        const currentPageElement = $(`#current-page-${viewerId.slice(-1)}`);
-        const prevButton = $(`#prev-button-${viewerId.slice(-1)}`);
-        const nextButton = $(`#next-button-${viewerId.slice(-1)}`);
-        const { images, itemsPerPage, currentPage } = viewerData[viewerId];
+        const viewer = viewers.find(v => v.id === viewerId);
+        if (!viewer) return;
+
+        const viewerElement = $(`#image-viewer-${viewerId}`);
+        const textContainer = $(`#text-${viewerId}`);
+        const currentPageElement = $(`#current-page-${viewerId}`);
+        const prevButton = $(`#prev-button-${viewerId}`);
+        const nextButton = $(`#next-button-${viewerId}`);
+
+        const { images, itemsPerPage, currentPage } = viewer;
         const start = currentPage * itemsPerPage;
         const currentImages = images.slice(start, start + itemsPerPage);
 
         // 이미지 렌더링
-        viewer.html(currentImages.map(data => `<img src="${data.img}" alt="Image">`).join(''));
+        viewerElement.html(currentImages.map(data => `<img src="${data.img}" alt="Image">`).join(''));
 
         // 텍스트 활성화
         textContainer.find('p').removeClass('active');
@@ -261,16 +290,16 @@ $(document).ready(function () {
     }
 
     // 버튼 이벤트 등록
-    Object.keys(viewerData).forEach((viewerId, index) => {
-        const prevButton = $(`#prev-button-${index + 1}`);
-        const nextButton = $(`#next-button-${index + 1}`);
-        const viewer = viewerData[viewerId];
+    viewers.forEach(viewer => {
+        const { id } = viewer;
+        const prevButton = $(`#prev-button-${id}`);
+        const nextButton = $(`#next-button-${id}`);
 
         // 이전 버튼
         prevButton.on('click', () => {
             if (viewer.currentPage > 0) {
                 viewer.currentPage--;
-                updateViewer(viewerId);
+                updateViewer(id);
             }
         });
 
@@ -278,11 +307,11 @@ $(document).ready(function () {
         nextButton.on('click', () => {
             if ((viewer.currentPage + 1) * viewer.itemsPerPage < viewer.images.length) {
                 viewer.currentPage++;
-                updateViewer(viewerId);
+                updateViewer(id);
             }
         });
 
         // 초기화
-        updateViewer(viewerId);
+        updateViewer(id);
     });
 });
